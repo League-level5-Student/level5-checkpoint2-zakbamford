@@ -30,6 +30,50 @@ public class Checkpoint {
 		 * 5. Print only the cars with "toyota" in the name.
 		 */
 		
+		ArrayList<CarMPGEntry> arr = readCarMPGEntryDataFromFile();
+		System.out.println("1.");
+		
+		Stream<CarMPGEntry> s = arr.stream();
+		s.forEach((entry) -> {
+			System.out.println(entry.carName);
+		});
+		System.out.println("\n2.");
+		
+		s = arr.stream();
+		s.forEach((entry) -> {
+			System.out.println(entry.carName + " " + entry.mpg);
+		});
+		System.out.println("\n3.");
+		
+		s = arr.stream();
+		ArrayList<String> names = new ArrayList<String>();
+		s.forEach((entry) -> {
+			names.add(entry.carName);
+		});
+		Stream<String> sortedNames = names.stream().sorted();
+		sortedNames.forEach((name) -> {
+			System.out.println(name);
+		});
+		System.out.println("\n4.");
+		
+		s = arr.stream();
+		ArrayList<String> removed = new ArrayList<String>();
+		s.forEach((entry) -> {
+			if (entry.cylinders != 8)
+				removed.add(entry.carName);
+		});
+		for (String str : removed)
+			System.out.println(str);
+		System.out.println("\n5.");
+		
+		s = arr.stream();
+		ArrayList<String> toyota = new ArrayList<String>();
+		s.forEach((entry) -> {
+			if (entry.carName.contains("toyota"))
+				toyota.add(entry.carName);
+		});
+		for (String str : toyota)
+			System.out.println(str);
 		
 	}
 	
